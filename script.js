@@ -1,16 +1,17 @@
 const renderBusinesses = (data, tabletop) => {
-  document.querySelector(".waiting").classList.toggle("hide");
+  //document.querySelector(".waiting").classList.remove(".hide");
   for (let i=0; i<data.length; i++) {
     makeBusinessItem(data[i]);
   }
 }
 
 const init = () => {
+  //document.querySelector(".businesses").innerText = "";
+  //document.querySelector(".waiting").classList.add(".hide");
   Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/17h_0IxZl0K2neRsKnBPXTWh1nHdh8CuFXTEf2kqEE48/edit?usp=sharing',
                    callback: renderBusinesses,
                    simpleSheet: true } )
 }
-window.addEventListener('DOMContentLoaded', init)
 
 const makeBusinessItem = (businessData) => {
   let html = '<div class="business allBorder"><h3 class="name">%name%</h3><p><span class="businessInfo booze">booze</span><span class="businessInfo food">food</span></p><p><span class="businessInfo takeaway">takeaway</span><span class="businessInfo delivery">delivery</p><p>Pick up/delivery: %deliveryPlace%</p><p>%notes%</p><p>twitter <a href="https://twitter.com/%twitterLink%">%twitterName%</p><p><a href="%link%">%name%\'s website</a></p></div>'
@@ -40,3 +41,7 @@ const makeBusinessItem = (businessData) => {
   html = html.replace("%name%", businessData.name);
   document.querySelector(".businesses").insertAdjacentHTML("beforeend", html);
 }
+
+//const locationButtons = Array.from(document.querySelectorAll("button"));
+//locationButtons.forEach(item => item.addEventListener("click", init));
+window.addEventListener('DOMContentLoaded', init)
