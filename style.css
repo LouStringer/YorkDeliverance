@@ -1,0 +1,167 @@
+@font-face {
+  font-family: 'Varela Round';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v9/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* colours:
+main site green: #50cf88; front-end: #1AA1C0; fullstack JS: #BF4564;
+python: #F27B9E; iOS: #37AFA8 */
+
+/* global settings */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Varela Round", "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-size: 1rem;
+  background-color: #50cf88dd;
+}
+
+.hide {
+  display: none;
+}
+
+/* header section */
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 350px;
+  padding: 15px;
+  background-color: #50cf88dd;
+  color: #fff;
+}
+
+header h1 {
+  margin: 20px;
+  font-size: 3em;
+}
+
+header p {
+  margin: 0 0 10px 0;
+  font-size: 1.5em;
+}
+
+/*locations*/
+
+h2 {
+  margin: 15px;
+  font-size: 1.5em;
+}
+
+.locationDiv {
+  display: flex;
+  justify-content: center;
+  vertical-align: top;
+}
+
+button.location {
+  display: inline-block;
+  width: 150px;
+  height: 75px;
+  margin: 10px;
+  border-radius: 7.5px;
+  border: 3px solid #fff;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.allFill {
+  background-color: #BF4564;
+}
+
+.hkFill {
+  background-color: #1AA1C0;
+}
+
+.yFill {
+  background-color: #F27B9E;
+}
+
+button:hover, button:focus, button.selected {
+  background-color: #fff;
+}
+
+button.allFill:hover, button.allFill:focus, button.allFill.selected {
+  border: 3px solid #BF4564;
+  color: #BF4564;
+}
+
+button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
+  border: 3px solid #1AA1C0;
+  color: #1AA1C0;
+}
+
+button.yFill:hover, button.yFill:focus, button.yFill.selected {
+  border: 3px solid #F27B9E;
+  color: #F27B9E;
+}
+
+/* businesses section */
+section.businesses {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.allBorder {
+  border: 3px solid #BF4564;
+}
+
+.hkBorder {
+  border: 3px solid #1AA1C0;
+}
+
+.yBorder {
+  border: 3px solid #F27B9E;
+}
+
+.nope {
+  text-decoration: line-through;
+  color: #1f1f1f;
+}
+
+/* business cards */
+div.business {
+  width: 300px;
+  min-height: 215px;
+  margin: 10px;
+  border-radius: 7.5px;
+  background-color: #ffffff;
+}
+
+div.business * {
+  padding: 5px;
+  text-align: left;
+  background-color: #fff;
+}
+
+div.business h3 {
+  margin: 0px;
+  font-size: 1.5em;
+  border-radius: 7.5px, 7.5px, 0px, 0px;
+  color: #fff;
+}
+
+div.business.allBorder h3 {
+  background-color: #BF4564;
+}
+
+div.business.hkBorder h3 {
+  background-color: #1AA1C0;
+}
+
+div.business.yBorder h3 {
+  background-color: #F27B9E;
+}
+
+span.businessInfo {
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  font-size: 1.1em;
+}
