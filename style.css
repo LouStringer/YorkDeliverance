@@ -5,9 +5,6 @@
   src: local('Varela Round Regular'), local('VarelaRound-Regular'), url(https://fonts.gstatic.com/s/varelaround/v9/w8gdH283Tvk__Lua32TysjIfp8uPLdshZg.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* colours:
-main site green: #50cf88; front-end: #7768AE; fullstack JS: #4D9DE0;
-python: #3BB273; iOS: #37AFA8 */
 
 /* global settings */
 * {
@@ -16,7 +13,13 @@ python: #3BB273; iOS: #37AFA8 */
   font-family: "Varela Round", "Helvetica Neue", sans-serif;
   text-align: center;
   font-size: 1rem;
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
+}
+
+body {
+    background-image: url("gplay.png");
+    background-repeat: repeat;
+    height: 100vh;
 }
 
 .hide {
@@ -35,11 +38,12 @@ header {
 header h1 {
   margin: 20px;
   font-size: 3em;
+  letter-spacing: 0.1em;
 }
 
 header p {
   margin: 0 0 10px 0;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 /*locations*/
@@ -49,7 +53,7 @@ h2 {
   font-size: 1.5em;
 }
 
-.locationDiv {
+.locationButtons {
   display: flex;
   justify-content: center;
   vertical-align: top;
@@ -57,17 +61,14 @@ h2 {
 
 button.location {
   display: inline-block;
-  width: 150px;
+  width: 200px;
   height: 75px;
   margin: 10px;
   border-radius: 7.5px;
   border: 3px solid #fff;
   color: #fff;
   transition: 0.2s;
-}
-
-.allFill {
-  background-color: #4D9DE0;
+  font-size: 1.4em;
 }
 
 .hkFill {
@@ -75,16 +76,12 @@ button.location {
 }
 
 .yFill {
-  background-color: #3BB273;
+  background-color: #468FCC;
 }
 
 button:hover, button:focus, button.selected {
   background-color: #fff;
-}
-
-button.allFill:hover, button.allFill:focus, button.allFill.selected {
-  border: 3px solid #4D9DE0;
-  color: #4D9DE0;
+  outline: none;
 }
 
 button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
@@ -93,8 +90,8 @@ button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
 }
 
 button.yFill:hover, button.yFill:focus, button.yFill.selected {
-  border: 3px solid #3BB273;
-  color: #3BB273;
+  border: 3px solid #468FCC;
+  color: #468FCC;
 }
 
 /* businesses section */
@@ -106,16 +103,12 @@ section.businesses {
   flex-wrap: wrap;
 }
 
-.allBorder {
-  border: 3px solid #4D9DE0;
-}
-
 .hkBorder {
   border: 3px solid #7768AE;
 }
 
 .yBorder {
-  border: 3px solid #3BB273;
+  border: 3px solid #468FCC;
 }
 
 .nope {
@@ -145,16 +138,12 @@ div.business h3 {
   color: #fff;
 }
 
-div.business.allBorder h3 {
-  background-color: #4D9DE0;
-}
-
 div.business.hkBorder h3 {
   background-color: #7768AE;
 }
 
 div.business.yBorder h3 {
-  background-color: #3BB273;
+  background-color: #468FCC;
 }
 
 span.businessInfo {
