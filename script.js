@@ -1,8 +1,24 @@
 let businesses = document.querySelector(".businesses")
+var shuffle = function (array) {
+	var currentIndex = array.length;
+	var temporaryValue, randomIndex;
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+	return array;
+};
 
 const renderBusinessesYork = (data, tabletop) => {
-  for (let i=0; i<data.length; i++) {
-    if (data[i].active == "TRUE" && data[i].york == "TRUE") {
+  let pubList = shuffle(data);
+  for (let i=0; i<pubList.length; i++) {
+    if (pubList[i].active == "TRUE" && pubList[i].york == "TRUE") {
       makeBusinessItem(data[i]);
       businesses.lastChild.classList.add("yBorder");
     }
@@ -10,8 +26,9 @@ const renderBusinessesYork = (data, tabletop) => {
 }
 
 const renderBusinessesHk = (data, tabletop) => {
-  for (let i=0; i<data.length; i++) {
-    if (data[i].active == "TRUE" && data[i].hk == "TRUE") {
+  let pubList = shuffle(data);
+  for (let i=0; i<pubList.length; i++) {
+    if (pubList[i].active == "TRUE" && pubList[i].hk == "TRUE") {
       makeBusinessItem(data[i]);
       businesses.lastChild.classList.add("hkBorder");
     }
