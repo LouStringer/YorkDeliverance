@@ -50,7 +50,7 @@ const initHk = () => {
 }
 
 const makeBusinessItem = (businessData) => {
-  let html = '<div class="business"><h3 class="name">%name%</h3><p><span class="businessInfo booze">booze</span><span class="businessInfo food">food</span></p><p><span class="businessInfo takeaway">takeaway</span><span class="businessInfo delivery">delivery</p><p>%notes%</p><p>twitter <a href="https://twitter.com/%twitterLink%">%twitterName%</p><p><a href="%link%">%name%\'s website</a></p></div>'
+  let html = '<div class="business"><h3 class="name">%name%</h3><p><span class="businessInfo booze">booze</span><span class="businessInfo food">food</span></p><p><span class="businessInfo takeaway">pick up</span><span class="businessInfo delivery">delivery</p><p>%notes%</p><p>twitter <a href="https://twitter.com/%twitterLink%">%twitterName%</p><p><a href="%link%">%name%\'s website</a></p></div>'
   html = html.replace("%name%", businessData.name);
   if (businessData.booze == "FALSE") {
     html = html.replace("businessInfo booze", "businessInfo booze nope");
