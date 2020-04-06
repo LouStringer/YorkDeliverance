@@ -48,14 +48,14 @@ const renderBusinessesHk = (data, tabletop) => {
 }
 
 const initYork = () => {
-  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, then coffee. Priorities!</p>";
+  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, coffee at the end. Priorities!</p>";
   Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/17h_0IxZl0K2neRsKnBPXTWh1nHdh8CuFXTEf2kqEE48/edit?usp=sharing',
                    callback: renderBusinessesYork,
                    simpleSheet: true } )
 }
 
 const initHk = () => {
-  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, then coffee. Priorities!</p>";
+  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, coffee at the end. Priorities!</p>";
   Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/17h_0IxZl0K2neRsKnBPXTWh1nHdh8CuFXTEf2kqEE48/edit?usp=sharing',
                    callback: renderBusinessesHk,
                    simpleSheet: true } )
