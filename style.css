@@ -31,24 +31,30 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 350px;
+  align-items: center; 
+  min-height: 350px;
   padding: 15px;
 }
 
 header h1 {
-  margin: 20px;
-  font-size: 3em;
+  margin: 20px 10px 0px 10px;
+  font-size: 1.8em;
   letter-spacing: 0.1em;
-  display: flex;
+  /* display: flex;
+  flex-direction: column;
+
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
-header h1 img {
-  margin: 0px;
+header img {
+  margin: 10px;
+  height: 60px;
+  width: 60px;
 }
 
 header p {
+  width: 80%;
   margin: 0 0 10px 0;
   font-size: 1.2em;
 }
@@ -57,7 +63,7 @@ header p {
 
 h2 {
   margin: 15px;
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 .locationButtons {
@@ -72,33 +78,33 @@ button.location {
   height: 75px;
   margin: 10px;
   border-radius: 7.5px;
-  border: 3px solid #fff;
-  color: #fff;
+  background-color: #fff;
   transition: 0.2s;
   font-size: 1.4em;
 }
 
 .hkFill {
-  background-color: #7768AE;
-}
-
-.yFill {
-  background-color: #468FCC;
-}
-
-button:hover, button:focus, button.selected {
-  background-color: #fff;
-  outline: none;
-}
-
-button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
   border: 3px solid #7768AE;
   color: #7768AE;
 }
 
-button.yFill:hover, button.yFill:focus, button.yFill.selected {
+.yFill {
   border: 3px solid #468FCC;
   color: #468FCC;
+}
+
+button:hover, button:focus, button.selected {
+  outline: none;
+}
+
+button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
+  background-color: #7768AE;
+  color: #fff;
+}
+
+button.yFill:hover, button.yFill:focus, button.yFill.selected {
+  background-color: #468FCC;
+  color: #fff;
 }
 
 /* businesses section */
@@ -110,12 +116,24 @@ section.businesses {
   flex-wrap: wrap;
 }
 
+.businessHeader {
+  width: 100%;
+}
+
 .hkBorder {
   border: 3px solid #7768AE;
 }
 
+.hkBorder .notes {
+  border-top: 3px solid #7768AE;
+}
+
 .yBorder {
   border: 3px solid #468FCC;
+}
+
+.yBorder .notes {
+  border-top: 3px solid #468FCC;
 }
 
 .nope {
@@ -151,6 +169,19 @@ div.business.hkBorder h3 {
 
 div.business.yBorder h3 {
   background-color: #468FCC;
+}
+ 
+p.businessType {
+  text-align: center;
+  font-size: 1.4em;
+}
+
+div.beer, div.beer * {
+  background: #F3E6B0;
+}
+
+div.coffee, div.coffee * {
+  background: #F4C1C0;
 }
 
 span.businessInfo {

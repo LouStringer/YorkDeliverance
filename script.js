@@ -18,7 +18,13 @@ var shuffle = function (array) {
 const renderBusinessesYork = (data, tabletop) => {
   let pubList = shuffle(data);
   for (let i=0; i<pubList.length; i++) {
-    if (pubList[i].active == "TRUE" && pubList[i].york == "TRUE") {
+    if (pubList[i].active == "TRUE" && pubList[i].york == "TRUE" && pubList[i].booze == "TRUE") {
+      makeBusinessItem(data[i]);
+      businesses.lastChild.classList.add("yBorder");
+    }
+  }
+  for (let i=0; i<pubList.length; i++) {
+    if (pubList[i].active == "TRUE" && pubList[i].york == "TRUE" && pubList[i].coffee == "TRUE") {
       makeBusinessItem(data[i]);
       businesses.lastChild.classList.add("yBorder");
     }
@@ -28,7 +34,13 @@ const renderBusinessesYork = (data, tabletop) => {
 const renderBusinessesHk = (data, tabletop) => {
   let pubList = shuffle(data);
   for (let i=0; i<pubList.length; i++) {
-    if (pubList[i].active == "TRUE" && pubList[i].hk == "TRUE") {
+    if (pubList[i].active == "TRUE" && pubList[i].hk == "TRUE" && pubList[i].booze == "TRUE" ) {
+      makeBusinessItem(data[i]);
+      businesses.lastChild.classList.add("hkBorder");
+    }
+  }
+  for (let i=0; i<pubList.length; i++) {
+    if (pubList[i].active == "TRUE" && pubList[i].hk == "TRUE" && pubList[i].coffee == "TRUE") {
       makeBusinessItem(data[i]);
       businesses.lastChild.classList.add("hkBorder");
     }
@@ -36,27 +48,25 @@ const renderBusinessesHk = (data, tabletop) => {
 }
 
 const initYork = () => {
-  businesses.innerHTML = "";
+  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, then coffee. Priorities!</p>";
   Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/17h_0IxZl0K2neRsKnBPXTWh1nHdh8CuFXTEf2kqEE48/edit?usp=sharing',
                    callback: renderBusinessesYork,
                    simpleSheet: true } )
 }
 
 const initHk = () => {
-  businesses.innerHTML = "";
+  businesses.innerHTML = "<p class=\"businessHeader\">Beer first, then coffee. Priorities!</p>";
   Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/17h_0IxZl0K2neRsKnBPXTWh1nHdh8CuFXTEf2kqEE48/edit?usp=sharing',
                    callback: renderBusinessesHk,
                    simpleSheet: true } )
 }
 
 const makeBusinessItem = (businessData) => {
-  let html = '<div class="business"><h3 class="name">%name%</h3><p><span class="businessInfo booze">booze</span><span class="businessInfo food">food</span></p><p><span class="businessInfo takeaway">pick up</span><span class="businessInfo delivery">delivery</p><p>%notes%</p><p>twitter <a href="https://twitter.com/%twitterLink%">%twitterName%</p><p><a href="%link%">%name%\'s website</a></p></div>'
+  let html = '<div class="business"><h3 class="name">%name%</h3><div class="beer"><p class="businessType">beer</p><p><span class="businessInfo takeaway">pick up</span><span class="businessInfo delivery">delivery</p></div><p class="notes">%notes%</p><p>twitter <a href="https://twitter.com/%twitterLink%">%twitterName%</p><p><a href="%link%">%name%\'s website</a></p></div>'
   html = html.replace("%name%", businessData.name);
-  if (businessData.booze == "FALSE") {
-    html = html.replace("businessInfo booze", "businessInfo booze nope");
-  };
-  if (businessData.food == "FALSE") {
-    html = html.replace("businessInfo food", "businessInfo food nope");
+  if (businessData.coffee == "TRUE") {
+    html = html.replace("<div class=\"beer\">", "<div class=\"coffee\">");
+    html = html.replace("<p class=\"businessType\">beer</p>", "<p class=\"businessType\">coffee</p>");
   };
   if (businessData.takeaway == "FALSE") {
     html = html.replace("businessInfo takeaway", "businessInfo takeaway nope");
@@ -64,21 +74,17 @@ const makeBusinessItem = (businessData) => {
   if (businessData.delivery == "FALSE") {
     html = html.replace("businessInfo delivery", "businessInfo delivery nope");
   }
-  // if (businessData.hk == "TRUE") {
-  //   html = html.replace("class=\"business yBorder\"", "class=\"business hkBorder\"")
-  // };
   html = html.replace("%notes%", businessData.notes);
-  html = html.replace("%twitterLink%", businessData.twitter.substring(1));
+  if (businessData.twitter.length > 0){
+    html = html.replace("%twitterLink%", businessData.twitter.substring(1));
+  } else {
+    html = html.replace("<p>twitter <a href=\"https://twitter.com/%twitterLink%\">%twitterName%</p>", "")
+  }; 
   html = html.replace("%twitterName%", businessData.twitter);
   html = html.replace("%link%", businessData.link);
   html = html.replace("%name%", businessData.name);
   businesses.insertAdjacentHTML("beforeend", html);
 }
 
-
-//const locationButtons = Array.from(document.querySelectorAll("button"));
-//locationButtons.forEach(item => item.addEventListener("click", init));
 document.querySelector("#y").addEventListener('click', initYork)
 document.querySelector("#hk").addEventListener('click', initHk)
-
-// window.addEventListener('DOMContentLoaded', init)
