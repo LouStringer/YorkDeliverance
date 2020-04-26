@@ -1,0 +1,27 @@
+{
+  "name": "york_deliverance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script_papaparse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LouStringer/YorkDeliverance.git"
+  },
+  "author": "Lou Stringer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LouStringer/YorkDeliverance/issues"
+  },
+  "homepage": "https://github.com/LouStringer/YorkDeliverance#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "live-server": "^1.2.1",
+    "papaparse": "^5.2.0"
+  }
+}
