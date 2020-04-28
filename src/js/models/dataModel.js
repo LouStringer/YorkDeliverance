@@ -14,6 +14,7 @@ export default class Data {
             complete: function(results) {
                 console.log(results.data);
                 this.results = results.data;
+                console.log(this.results);
             }
         });
     }
