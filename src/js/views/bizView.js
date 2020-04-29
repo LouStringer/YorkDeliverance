@@ -1,10 +1,10 @@
 import { domElements } from './baseView';
 
-export const clearBizList = () => {
-    domElements.bizList.innerHTML = '';
+const clearDataList = () => {
+    domElements.dataList.innerHTML = '';
 }
 
-// add Html for buisness to businessList
+// add Html for buisness to dataList
 const prepBizHtml = (biz) => {
     const bizHtml = `
         <div class="business">
@@ -21,10 +21,34 @@ const prepBizHtml = (biz) => {
             <p><a href="${biz.link}">${biz.name}\'s website</a></p>
         </div>`;
     console.log(bizHtml);   
-    domElements.bizList.insertAdjacentHTML('beforeend', bizHtml);
+    domElements.dataList.insertAdjacentHTML('beforeend', bizHtml);
   };
 
-  export const showBiz = (data) => {
-    clearBizList();
-    data.forEach(prepBizHtml)
-  }
+  // show Biz data
+const showBiz = (type, data) => {
+    const holderArray = data.filter(function(item){
+        if (item.`${type}` == true) {
+            return true
+        }
+    })
+    holderArray.forEach(item => prepBizHtml(item)) 
+}
+
+export const getButtonId = () => { event.target.id }
+
+// export const showData = (data) => {
+// // get id of button clicked
+// const type = event.target.id;
+// console.log(type)
+// clearDataList();
+// if (type == "ev") {
+//     //do events stuff
+// } else {
+//     showBiz(type, data);
+// }
+// // for biz
+//     // filter array for same type only
+//     // make html for each & push
+
+// // data.forEach(prepBizHtml)
+// }

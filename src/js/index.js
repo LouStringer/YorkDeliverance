@@ -1,17 +1,37 @@
 // grab input from dependency scripts
+import { dataUrls, shuffle } from './models/baseModel'
 import { domElements } from './views/baseView';
-import Data from './models/dataModel';
-import * as bizView from './views/bizView'
+import * as dataModel from './models/dataModel';
+import * as dataView from './views/dataView';
 
-// Grab data from YorkDeliverance Google Sheets
-const data = new Data('booze');
-console.log(data);
+// grab data from Google Files & update HTML once loaded (data only downloaded once)
+const dataObject = {
+	bizData: [],
+	eventsData: []
+}
 
-data.getData();
-console.log(data);
+const loadData = () => {        
+	const biz = dataModel.getData(`${dataUrls.businesses}`, dataObject.bizData);
+	const events = dataModel.getData(`${dataUrls.events}`, dataObject.eventsData);
+	Promise.all([ biz, events])
+		.then(dataView.dataLoaded)       
+};
 
-//show biz data
-bizView.showBiz(data.results)
+loadData();
+console.log(dataObject.bizData);
+
+const gimmieTheGoodies = () => {
+	// const type = dataView.getButtonId();  // this doesn't work. Why?
+	dataView.clearDataList();
+	const type = event.target.id; // this does work
+	dataObject.bizData = shuffle(dataObject.bizData);
+	dataView.renderData(dataObject.bizData, type);
+};
+
+
+// add event listener to buttons
+domElements.buttonsAll.forEach(item => item.addEventListener("click", gimmieTheGoodies));
+
 
 // // render data in the businesses div
 // const renderBusinessesYork = (data, tabletop) => {

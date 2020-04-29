@@ -6,6 +6,24 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* set colours */
+/* :root {
+  --y-color: #00BBF9;
+  --hk-color: #0099D3;
+  --cf-color: #F15BB5;
+  --ev-color: #AF77EA;
+  --bg-color: #FFFF67;
+} */
+:root {
+  --y-color: #6A4C93;
+  --hk-color: #1982C4;
+  --cf-color: #D8315B;
+  --ev-color: #1E6462;
+  --bg-color: #f5f5f5;
+  --wt-color: #c7c7c7;
+}
+
+
 /* global settings */
 * {
   margin: 0;
@@ -31,20 +49,19 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
+  width: 90%;
   min-height: 350px;
+  border-radius: 10px;
+  margin: 30px auto;
   padding: 15px;
+  background-color: var(--bg-color);
 }
 
 header h1 {
   margin: 20px 10px 0px 10px;
   font-size: 1.8em;
   letter-spacing: 0.1em;
-  /* display: flex;
-  flex-direction: column;
-
-  justify-content: center;
-  align-items: center; */
 }
 
 header img {
@@ -59,21 +76,21 @@ header p {
   font-size: 1.2em;
 }
 
-/*locations*/
+/*buttonsDiv*/
 
 h2 {
   margin: 15px;
   font-size: 1.4em;
 }
 
-.locationButtons {
+.buttonsHolder {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   vertical-align: top;
 }
 
-button.location {
-  display: inline-block;
+button {
   width: 200px;
   height: 75px;
   margin: 10px;
@@ -83,32 +100,56 @@ button.location {
   font-size: 1.4em;
 }
 
-.hkFill {
-  border: 3px solid #7768AE;
-  color: #7768AE;
+/* waiting to load */
+.waitingButton > button {
+  border: 3px solid var(--wt-color);
+  color: var(--wt-color);
 }
 
+/* once loaded */
 .yFill {
-  border: 3px solid #468FCC;
-  color: #468FCC;
+  border: 3px solid var(--y-color);
+  color: var(--y-color);
+}
+
+.hkFill {
+  border: 3px solid var(--hk-color);
+  color: var(--hk-color);
+}
+
+.cfFill {
+  border: 3px solid var(--cf-color);
+  color: var(--cf-color);
+}
+
+.evFill {
+  border: 3px solid var(--ev-color);
+  color: var(--ev-color);
 }
 
 button:hover, button:focus, button.selected {
   outline: none;
-}
-
-button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
-  background-color: #7768AE;
   color: #fff;
 }
 
 button.yFill:hover, button.yFill:focus, button.yFill.selected {
-  background-color: #468FCC;
-  color: #fff;
+  background-color: var(--y-color);
+}
+
+button.hkFill:hover, button.hkFill:focus, button.hkFill.selected {
+  background-color: var(--hk-color);
+}
+
+button.cfFill:hover, button.cfFill:focus, button.cfFill.selected {
+  background-color: var(--cf-color);
+}
+
+button.evFill:hover, button.evFill:focus, button.evFill.selected {
+  background-color: var(--ev-color);
 }
 
 /* businesses section */
-section.businesses {
+#dataList {
   width: 90vw;
   margin: 0 auto;
   display: flex;
@@ -116,24 +157,50 @@ section.businesses {
   flex-wrap: wrap;
 }
 
+/* events waiting text */
+.eventsTemp {
+  margin: 10px;
+  border: 3px solid var(--ev-color);
+  border-radius: 7.5px;
+  background-color: #fff;
+  padding: 20px;
+  font-size: 1.4em;
+}
+
 .businessHeader {
   width: 100%;
 }
 
-.hkBorder {
-  border: 3px solid #7768AE;
-}
-
-.hkBorder .notes {
-  border-top: 3px solid #7768AE;
-}
-
 .yBorder {
-  border: 3px solid #468FCC;
+  border: 3px solid var(--y-color);
 }
 
 .yBorder .notes {
-  border-top: 3px solid #468FCC;
+  border-top: 3px solid var(--y-color);
+}
+
+.hkBorder {
+  border: 3px solid var(--hk-color);
+}
+
+.hkBorder .notes {
+  border-top: 3px solid var(--hk-color);
+}
+
+.cfBorder {
+  border: 3px solid var(--cf-color);
+}
+
+.cfBorder .notes {
+  border-top: 3px solid var(--cf-color);
+}
+
+.evBorder {
+  border: 3px solid var(--ev-color);
+}
+
+.evBorder .notes {
+  border-top: 3px solid var(--ev-color);
 }
 
 .nope {
@@ -147,7 +214,7 @@ div.business {
   min-height: 215px;
   margin: 10px;
   border-radius: 7.5px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 div.business * {
@@ -163,12 +230,20 @@ div.business h3 {
   color: #fff;
 }
 
-div.business.hkBorder h3 {
-  background-color: #7768AE;
+div.business.yBorder h3 {
+  background-color: var(--y-color);
 }
 
-div.business.yBorder h3 {
-  background-color: #468FCC;
+div.business.hkBorder h3 {
+  background-color: var(--hk-color);
+}
+
+div.business.cfBorder h3 {
+  background-color: var(--cf-color);
+}
+
+div.business.evBorder h3 {
+  background-color: var(--ev-color);
 }
  
 p.businessType {
@@ -176,13 +251,13 @@ p.businessType {
   font-size: 1.4em;
 }
 
-div.beer, div.beer * {
+/* div.beer, div.beer * {
   background: #F3E6B0;
 }
 
 div.coffee, div.coffee * {
   background: #F4C1C0;
-}
+} */
 
 span.businessInfo {
   display: inline-block;
