@@ -31,7 +31,7 @@
   font-family: "Varela Round", "Helvetica Neue", sans-serif;
   text-align: center;
   font-size: 1rem;
-  /* background-color: #e7e7e7; */
+  transition: 0.2s;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
   display: none;
 }
 
-/* header section */
+/* header section - intro & buttons */
 header {
   display: flex;
   flex-direction: column;
@@ -55,7 +55,7 @@ header {
   border-radius: 10px;
   margin: 30px auto;
   padding: 15px;
-  background-color: var(--bg-color);
+  background-color: #fff;
 }
 
 header h1 {
@@ -95,8 +95,7 @@ button {
   height: 75px;
   margin: 10px;
   border-radius: 7.5px;
-  background-color: #fff;
-  transition: 0.2s;
+  background-color: var(--bg-color);
   font-size: 1.4em;
 }
 
@@ -148,23 +147,13 @@ button.evFill:hover, button.evFill:focus, button.evFill.selected {
   background-color: var(--ev-color);
 }
 
-/* businesses section */
+/* data section */
 #dataList {
   width: 90vw;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-/* events waiting text */
-.eventsTemp {
-  margin: 10px;
-  border: 3px solid var(--ev-color);
-  border-radius: 7.5px;
-  background-color: #fff;
-  padding: 20px;
-  font-size: 1.4em;
 }
 
 .businessHeader {
@@ -195,14 +184,6 @@ button.evFill:hover, button.evFill:focus, button.evFill.selected {
   border-top: 3px solid var(--cf-color);
 }
 
-.evBorder {
-  border: 3px solid var(--ev-color);
-}
-
-.evBorder .notes {
-  border-top: 3px solid var(--ev-color);
-}
-
 .nope {
   text-decoration: line-through;
   color: #1f1f1f;
@@ -215,19 +196,29 @@ div.business {
   margin: 10px;
   border-radius: 7.5px;
   background-color: #fff;
+  padding: 0 0 15px 0;
 }
 
 div.business * {
-  padding: 5px;
+  padding: 10px 10px 0 10px;
   text-align: left;
   background-color: #fff;
 }
 
+div.business a {
+  padding: 0;
+}
+
 div.business h3 {
   margin: 0px;
-  font-size: 1.5em;
+  padding: 10px;
   border-radius: 7.5px, 7.5px, 0px, 0px;
+  font-size: 1.5em;
   color: #fff;
+}
+
+div.business div.booze, div.business div.booze * {
+  padding: 5px;
 }
 
 div.business.yBorder h3 {
@@ -242,26 +233,64 @@ div.business.cfBorder h3 {
   background-color: var(--cf-color);
 }
 
-div.business.evBorder h3 {
-  background-color: var(--ev-color);
-}
- 
 p.businessType {
   text-align: center;
   font-size: 1.4em;
 }
-
-/* div.beer, div.beer * {
-  background: #F3E6B0;
-}
-
-div.coffee, div.coffee * {
-  background: #F4C1C0;
-} */
 
 span.businessInfo {
   display: inline-block;
   width: 45%;
   text-align: center;
   font-size: 1.1em;
+}
+
+/* events lists */
+div.events {
+  width: 400px;
+  margin: 20px;
+  border: 3px solid var(--ev-color);  border-radius: 10px;
+  background-color: #fff;
+}
+
+div.events * {
+  text-align: left;
+}
+
+div.events h3 {
+  margin: 0px;
+  padding: 5px;
+  font-size: 1.5em;
+  color: #fff;
+  background-color: var(--ev-color);
+}
+
+li {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--ev-color);
+  padding: 0 0 15px 0;
+}
+
+li * {
+  padding: 10px 10px 0 10px;
+}
+
+li div.eventEssential {
+  background-color: var(--bg-color);
+  padding: 15px;
+}
+
+li div.eventEssential *, li p a {
+  padding: 0;
+}
+
+li div.eventEssential h4 {
+  font-size: 1.4em;
+  color: var(--ev-color);
+}
+
+li div.eventEssential p span {
+  font-size: 1.2em;
 }
